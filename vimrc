@@ -63,7 +63,6 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'    " Required
 Plugin 'git@github.com:scrooloose/nerdtree.git'
 Plugin 'git@github.com:Valloric/YouCompleteMe.git'
-Plugin 'git@github.com:kien/ctrlp.vim.git'
 Plugin 'git@github.com:terryma/vim-multiple-cursors.git'
 Plugin 'git@github.com:altercation/vim-colors-solarized.git'
 Plugin 'git@github.com:Yggdroot/indentLine.git'
@@ -75,11 +74,13 @@ Plugin 'git@github.com:itchyny/lightline.vim.git'
 Plugin 'git@github.com:begriffs/haskell-vim-now.git'
 Plugin 'git@github.com:godlygeek/tabular.git'
 Plugin 'git@github.com:fatih/vim-go.git'
-Plugin 'shawncplus/phpcomplete.vim'
+Plugin 'lvht/phpcd.vim'
+Plugin 'posva/vim-vue'
+Plugin 'junegunn/fzf'
+"Plugin 'git@github.com:kien/ctrlp.vim.git'
 "Plugin 'git@github.com:rking/ag.vim.git'
 "Plugin 'git@github.com:wklken/k-vim.git'
 "Plugin 'git@github.com:tpope/vim-commentary.git'
-"Plugin '2072/PHP-Indenting-for-VIm'
 "Plugin 'git@github.com:tpope/vim-fugitive.git'
 
 call vundle#end()
@@ -149,3 +150,14 @@ au FileType html,blade let b:delimitMate_matchpairs = "(:),[:],{:},<:>"
 set laststatus=2
 
 autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
+
+" fzf
+set rtp+=/usr/local/opt/fzf
+silent! nmap <C-P> :FZF<CR>
+
+" Python3
+if has('python3')
+    command! -nargs=1 Py py3 <args>
+    set pythonthreedll=/usr/local/Frameworks/Python.framework/Versions/3.6/Python
+    set pythonthreehome=/usr/local/Frameworks/Python.framework/Versions/3.6
+endif
