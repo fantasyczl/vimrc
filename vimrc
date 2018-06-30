@@ -77,6 +77,9 @@ Plugin 'git@github.com:fatih/vim-go.git'
 Plugin 'lvht/phpcd.vim'
 Plugin 'posva/vim-vue'
 Plugin 'junegunn/fzf'
+Plugin 'git@github.com:fantasyczl/smarty-vim.git'
+Plugin 'git@github.com:morhetz/gruvbox.git'
+Plugin 'git@github.com:joonty/vim-phpqa.git'
 "Plugin 'git@github.com:kien/ctrlp.vim.git'
 "Plugin 'git@github.com:rking/ag.vim.git'
 "Plugin 'git@github.com:wklken/k-vim.git'
@@ -92,13 +95,14 @@ if !has('gui_running')
 endif
 
 if strftime("%H") > 5 && strftime("%H") < 18
-    " set background=dark
-    set background=light
+    set background=dark
 else
-    set background=light
+    " set background=light
+    set background=dark
 endif
 let g:solarized_contrast="high"
 colorscheme solarized
+" colorscheme gruvbox
 
 filetype plugin indent on " Required
 
