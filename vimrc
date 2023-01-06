@@ -90,6 +90,7 @@ Plugin 'jremmen/vim-ripgrep'
 "Plugin 'ludovicchabant/vim-gutentags'
 "Plugin 'git@github.com:rking/ag.vim.git'
 "Plugin 'git@github.com:wklken/k-vim.git'
+Plugin 'shmup/vim-sql-syntax'
 
 call vundle#end()
 
