@@ -85,11 +85,11 @@ Plugin 'mhinz/vim-signify'
 Plugin 'majutsushi/tagbar'
 Plugin 'jremmen/vim-ripgrep'
 "Plugin 'git@github.com:Valloric/MatchTagAlways.git'
-"Plugin 'git@github.com:fantasyczl/blade-php-vim.git'
 "Plugin 'posva/vim-vue'
 "Plugin 'ludovicchabant/vim-gutentags'
 "Plugin 'git@github.com:rking/ag.vim.git'
 "Plugin 'git@github.com:wklken/k-vim.git'
+Plugin 'rust-lang/rust.vim'
 
 call vundle#end()
 
@@ -129,6 +129,9 @@ let g:enable_ycm_at_startup=1
 let g:ycm_auto_trigger=1
 " let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+let g:ycm_gopls_binary_path = '/Users/czl/Documents/go/bin/gopls'
+let g:ycm_rust_toolchain_root = '/usr/local/bin/rustc'
+let g:ycm_clangd_binary_path = "/usr/local/opt/llvm/bin/clangd"
 
 " Powerline {
 " set guifont = PowerlineSymbols\ for\ Powerline
