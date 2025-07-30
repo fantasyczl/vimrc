@@ -251,3 +251,53 @@ nmap <F10> :GoDef<CR>
 " rust
 au FileType rust let b:delimitMate_matchpairs="(:),[:],{:}"
 au FileType rust let b:delimitMate_quotes = "\""
+
+
+function! DetectDuplicateByRegex(pattern)
+  let last_line = line('$')
+  let match_count = 0
+  let matches = []
+  let first_match_line = 0
+
+  " 清除之前的高亮
+  silent! call matchdelete(9999)
+  silent! syntax clear SimilarMatchGroup
+  silent! call clearmatches()
+
+  " 定义高亮组
+  highlight SimilarMatchGroup ctermbg=red guibg=LightYellow
+
+  for i in range(1, last_line - 1)
+    let l1 = getline(i)
+    let l2 = getline(i + 1)
+
+    let m1 = matchstr(l1, a:pattern)
+    let m2 = matchstr(l2, a:pattern)
+
+    if m1 !=# '' && m1 ==# m2
+      call add(matches, 'Line '.i.' & '.(i+1).' match ['.m1.']: '.l1)
+
+      " 高亮两行
+      call matchadd('SimilarMatchGroup', '\%'.i.'l')
+      call matchadd('SimilarMatchGroup', '\%'.(i+1).'l')
+
+      if first_match_line == 0
+        let first_match_line = i
+      endif
+
+      let match_count += 1
+    endif
+  endfor
+
+  if match_count == 0
+    echo "✅ 没有发现相邻行匹配的相同内容。"
+  else
+    echo "⚠️ 共发现 ".match_count." 组相邻匹配行。"
+    for l in matches
+      echom l
+    endfor
+    " 跳转到第一处匹配
+    execute first_match_line
+  endif
+endfunction
+
